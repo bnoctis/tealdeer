@@ -40,7 +40,7 @@ Build and install the tool via cargo...
 
 ## Build From Source
 
-Debug build with logging enabled:
+Debug build with logging enabled (export `RUST_LOG=tldr=debug` env variable):
 
     $ cargo build --features logging
 
@@ -48,9 +48,9 @@ Release build without logging:
 
     $ cargo build --release
 
-To enable the log output, set the `RUST_LOG` env variable:
+Release build with bundled CA roots:
 
-    $ export RUST_LOG=tldr=debug
+    $ cargo build --release --no-default-features --features webpki-roots
 
 ## Autocompletion
 
