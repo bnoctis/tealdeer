@@ -40,17 +40,19 @@ Build and install the tool via cargo...
 
 ## Build From Source
 
-Debug build with logging enabled (export `RUST_LOG=tldr=debug` env variable):
-
-    $ cargo build --features logging
-
-Release build without logging:
+Release build:
 
     $ cargo build --release
 
 Release build with bundled CA roots:
 
     $ cargo build --release --no-default-features --features webpki-roots
+
+Debug build with logging support:
+
+    $ cargo build --features logging
+
+(To enable logging at runtime, export the `RUST_LOG=tldr=debug` env variable.)
 
 ## Autocompletion
 
