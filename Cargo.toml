@@ -46,8 +46,12 @@ filetime = "0.2.10"
 
 [features]
 default = ["native-roots"]
+# Use Rustls with native roots
 native-roots = ["reqwest/rustls-tls-native-roots"]
+# Use Rustls with WebPK roots
 webpki-roots = ["reqwest/rustls-tls-webpki-roots"]
+# Use native TLS (SChannel on Windows, Secure Transport on macOS and OpenSSL otherwise)
+native-tls = ["reqwest/native-tls"]
 logging = ["env_logger"]
 
 [profile.release]

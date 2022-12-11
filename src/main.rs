@@ -17,11 +17,22 @@
 #![allow(clippy::too_many_lines)]
 
 #[cfg(any(
+    all(
+        feature = "native-roots",
+        feature = "webpki-roots",
+        feature = "native-tls"
+    ),
     all(feature = "native-roots", feature = "webpki-roots"),
-    not(any(feature = "native-roots", feature = "webpki-roots")),
+    all(feature = "native-roots", feature = "native-tls"),
+    all(feature = "webpki-roots", feature = "native-tls"),
+    not(any(
+        feature = "native-roots",
+        feature = "webpki-roots",
+        feature = "native-tls"
+    )),
 ))]
 compile_error!(
-    "exactly one of feature \"native-roots\" and feature \"webpki-roots\" must be enabled"
+    "exactly one of features \"native-roots\", \"webpki-roots\" or \"native-tls\" must be enabled"
 );
 
 use std::{env, process};
